@@ -2,6 +2,11 @@
 
 A compact, project-local AI-agent skillset for feature/fix work.
 
+## Inspired by:
+
+- [Superpowers](https://github.com/obra/superpowers)
+- [Skills by Matt Pocock](https://github.com/mattpocock/skills)
+
 This version uses a configurable orchestration folder:
 
 ```text
