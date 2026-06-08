@@ -1,0 +1,71 @@
+---
+name: subagent-slice-development
+description: Delegate one vertical slice to a subagent with strict scope, stop conditions, and compact handoff.
+---
+
+# Subagent Slice Development
+
+Use for implementation sessions where subagents develop slices.
+
+## Main agent responsibilities
+
+Before spawning a subagent, provide only:
+
+```text
+- ORCHESTRATION_ROOT
+- task-id
+- slice name and number
+- relevant Feature Intent sections
+- slice plan
+- current progress
+- files/areas already known
+- allowed scope
+- disallowed scope
+- verification expectations
+- handoff format
+```
+
+Do not pass entire chat history unless required.
+
+## Subagent prompt shape
+
+```md
+You are implementing exactly one vertical slice.
+
+ORCHESTRATION_ROOT:
+<ORCHESTRATION_ROOT>
+
+Task ID:
+<task-id>
+
+Read:
+- <ORCHESTRATION_ROOT>/tasks/<task-id>/TASK.md
+- <ORCHESTRATION_ROOT>/tasks/<task-id>/FEATURE_INTENT.md
+- <ORCHESTRATION_ROOT>/tasks/<task-id>/VERTICAL_PLAN.md
+- <ORCHESTRATION_ROOT>/tasks/<task-id>/PROGRESS.md
+
+Your slice:
+<slice>
+
+Rules:
+- Do not broaden scope.
+- Do not implement future slices.
+- Do not refactor unrelated code.
+- Write/identify one failing check first.
+- Implement the minimum cross-layer change.
+- Verify communication between touched layers.
+- Update progress only for your slice.
+
+Return:
+- files changed
+- checks added
+- checks run
+- result
+- assumptions
+- risks
+- suggested next step
+```
+
+## Main agent after subagent returns
+
+Review diff, inspect checks, use `intent-slice-review`, update task-scoped `PROGRESS.md`, and spawn next subagent only if current slice passes.
