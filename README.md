@@ -1,6 +1,6 @@
-# Intent + Vertical Slice Skillset v2
+# Start-With-Why Skillset (Beta Version)
 
-A compact, project-local AI-agent skillset for feature/fix work.
+A compact, project-local AI-agent skillset for feature/fix work. Still in Beta.
 
 ## Inspired by:
 
