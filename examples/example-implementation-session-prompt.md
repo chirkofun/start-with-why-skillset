@@ -7,6 +7,7 @@ This is an implementation session.
 Determine ORCHESTRATION_ROOT from the project. Use `.pi` unless another project-local root is configured.
 
 Start with `using-skillset`.
+Respect project-local instructions, task frontmatter, and branch/worktree lifecycle state.
 
 Read:
 - `<ORCHESTRATION_ROOT>/current-task.md`

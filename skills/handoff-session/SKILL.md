@@ -28,6 +28,14 @@ ARCHITECTURE_RADAR.md
 ## Handoff format
 
 ```md
+---
+task_id: <task-id>
+status: <status>
+phase: <phase>
+current_slice: <slice-or-null>
+updated: YYYY-MM-DD
+---
+
 # Handoff
 
 ## ORCHESTRATION_ROOT
@@ -36,8 +44,11 @@ ARCHITECTURE_RADAR.md
 ## Task ID
 ...
 
+## Status
+new | planned | active | paused | blocked | deferred | completed | archived | superseded
+
 ## Current phase
-Planning | Implementation | Review | Verification
+intent | planning | implementation | review | verification | complete
 
 ## Intent
 ...
@@ -45,11 +56,16 @@ Planning | Implementation | Review | Verification
 ## Destination
 ...
 
+## Branch / worktree
+...
+
 ## Current slice
 ...
 
-## Completed slices
-- ...
+## Slice Progress
+
+| Slice | Status | Evidence | Checks | Review Verdict |
+|---|---|---|---|---|
 
 ## Next slice
 ...

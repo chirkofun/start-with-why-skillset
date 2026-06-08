@@ -19,6 +19,27 @@ Order:
 4. Else create/use `.pi` for PI agent.
 5. Never use a global folder for task state.
 
+## Respect project instructions
+
+Before planning or implementation, inspect applicable project-local instructions:
+
+```text
+AGENTS.md
+CLAUDE.md
+SYSTEM.md
+CONTEXT.md
+docs/adr/
+```
+
+Also check for nearer-scoped instruction files in directories you will touch.
+
+Rules:
+- Always obey project-local instructions over generic skill instructions.
+- Capture durable constraints in task-scoped `FEATURE_INTENT.md`.
+- If project instructions conflict with this skillset, follow the project instructions.
+- If project instructions conflict with the user request, ask before proceeding.
+- Examples: use required wrapper scripts, avoid direct Docker commands when prohibited, and follow local branch/base-branch rules.
+
 ## Required root files
 
 Check or create:
@@ -37,18 +58,65 @@ CONTEXT.md
 docs/adr/
 ```
 
+## Structured state rule
+
+Use YAML frontmatter in task-state files managed by this skillset. Treat frontmatter as authoritative for routing and lifecycle state.
+
+Minimum task state:
+
+```yaml
+task_id: 2026-06-08-upload-retry
+status: planned
+phase: implementation
+current_slice: 1
+created: 2026-06-08
+updated: 2026-06-08
+base_branch: main
+branch: feature/2026-06-08-upload-retry
+worktree: ../worktrees/2026-06-08-upload-retry
+archived: false
+```
+
+Allowed task statuses:
+
+```text
+new, planned, active, paused, blocked, deferred, completed, archived, superseded
+```
+
+Allowed phases:
+
+```text
+intent, planning, implementation, review, verification, complete
+```
+
 ## Task identity check
 
 Before reading task-specific files:
 
 1. Read `<ORCHESTRATION_ROOT>/current-task.md`.
 2. If it points to a task, read `<ORCHESTRATION_ROOT>/tasks/<task-id>/TASK.md`.
-3. Compare active task to user's current request.
-4. If the request clearly continues the task, use that task.
-5. If the request is a new feature/fix, create a new task.
-6. If uncertain, ask one short question with a recommended answer.
+3. Check the active task status and lifecycle state.
+4. If the active task is `completed` or `archived`, do not resume it silently; create a follow-up task unless the user explicitly asks to reopen it.
+5. Compare active task to user's current request.
+6. If the request clearly continues a non-completed active task, use that task.
+7. If the request is a new feature/fix, create a new task.
+8. If another task is active in this worktree/session, ask whether to switch, pause it, or use a separate worktree.
+9. If uncertain, ask one short question with a recommended answer.
 
 Default: new feature/fix request means new task unless user says continue.
+
+## Task lifecycle rules
+
+- Only one current task is allowed per worktree/session.
+- When switching away from unfinished work, mark the previous task `paused` or `blocked` before changing `current-task.md`.
+- When implementation starts, set task status to `active` and record branch/worktree when applicable.
+- Branch from `main` by default unless project-local instructions say otherwise.
+- If the current git branch does not match the task branch, warn before editing.
+- Use separate worktrees for parallel active tasks.
+- A task may be marked `completed` only after `verification-before-completion` passes.
+- Archive completed, superseded, abandoned, or obsolete tasks by setting `status: archived`, `archived: true`, `archived_at`, and `archive_reason`.
+- Reopen completed tasks only on explicit request; record `reopened_at` and `reopen_reason` and preserve prior verification evidence.
+- Mark deferred slices in `PROGRESS.md` with reason, impact, follow-up task/decision, and approval/source.
 
 ## Task path rule
 
@@ -92,5 +160,7 @@ State:
 - task-id,
 - current phase,
 - loaded skill,
+- project instructions read,
+- active lifecycle status,
 - missing required state,
 - next action.

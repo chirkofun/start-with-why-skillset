@@ -1,10 +1,28 @@
+---
+task_id: ""
+status: ""
+phase: ""
+current_slice: null
+updated: ""
+---
+
 # Handoff
 
 ## ORCHESTRATION_ROOT
 
 ## Task ID
 
+## Status
+new | planned | active | paused | blocked | deferred | completed | archived | superseded
+
 ## Current phase
+intent | planning | implementation | review | verification | complete
+
+## Branch / Worktree
+
+- Base branch:
+- Task branch:
+- Worktree:
 
 ## Intent
 
@@ -12,8 +30,10 @@
 
 ## Current slice
 
-## Completed slices
-- 
+## Slice Progress
+
+| Slice | Status | Evidence | Checks | Review Verdict |
+|---|---|---|---|---|
 
 ## Next slice
 

@@ -9,7 +9,7 @@ Use for bugs.
 
 ## Inputs
 
-Use task-scoped files from `<ORCHESTRATION_ROOT>/tasks/<task-id>/`. If bug intent does not exist, create a minimal `FEATURE_INTENT.md`.
+Use task-scoped files from `<ORCHESTRATION_ROOT>/tasks/<task-id>/`. If bug intent does not exist, create a minimal `FEATURE_INTENT.md`. Respect project-local instructions over generic skill instructions.
 
 ## Process
 
@@ -22,7 +22,8 @@ Use task-scoped files from `<ORCHESTRATION_ROOT>/tasks/<task-id>/`. If bug inten
 7. Plan the fix as a vertical slice.
 8. Implement minimal fix.
 9. Verify regression check.
-10. Review against intent.
+10. Update the slice row in `PROGRESS.md` with evidence and checks.
+11. Review against intent.
 
 ## Do not
 

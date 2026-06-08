@@ -19,14 +19,17 @@ Do not create speculative interfaces.
 For the current slice:
 
 1. Read `TASK.md`, `FEATURE_INTENT.md`, `VERTICAL_PLAN.md`, and `PROGRESS.md` from `<ORCHESTRATION_ROOT>/tasks/<task-id>/`.
-2. Identify the slice stop condition.
-3. Write or identify one failing check for the behavior.
-4. Run it. Confirm it fails for the expected reason.
-5. Implement the smallest change across required layers.
-6. Run the slice check.
-7. Run relevant regression checks.
-8. Verify communication between touched layers.
-9. Update task-scoped `PROGRESS.md`.
+2. Confirm project-local instructions and task branch/worktree constraints still apply.
+3. Identify the slice stop condition.
+4. Set `TASK.md` frontmatter to `status: active`, `phase: implementation`, and the current slice.
+5. Mark the slice `in_progress` in the `PROGRESS.md` slice table.
+6. Write or identify one failing check for the behavior.
+7. Run it. Confirm it fails for the expected reason.
+8. Implement the smallest change across required layers.
+9. Run the slice check.
+10. Run relevant regression checks.
+11. Verify communication between touched layers.
+12. Update task-scoped `PROGRESS.md` with evidence, checks, files changed, and next action.
 
 ## Communication check
 
@@ -52,3 +55,5 @@ Communication verified:
 Intent match:
 Ready for intent-slice-review: yes/no
 ```
+
+Do not mark the slice `done` until `intent-slice-review` records a `Proceed` verdict, unless the slice is explicitly deferred with reason, impact, and follow-up decision.

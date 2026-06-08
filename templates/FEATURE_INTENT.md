@@ -1,3 +1,10 @@
+---
+task_id: ""
+status: new
+phase: intent
+updated: ""
+---
+
 # Feature Intent
 
 ## Intent
@@ -11,7 +18,10 @@
 - 
 
 ## Constraints
-- 
+- Project-local instructions checked (`AGENTS.md`/`CLAUDE.md`/`SYSTEM.md`/`CONTEXT.md`/`docs/adr/`):
+- Required wrappers/commands:
+- Branch/worktree rules:
+- Other constraints:
 
 ## Existing System Facts
 - 
