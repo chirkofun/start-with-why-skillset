@@ -30,7 +30,7 @@ superseded_by: ""
 
 - Allowed statuses: `new`, `planned`, `active`, `paused`, `blocked`, `deferred`, `completed`, `archived`, `superseded`.
 - Allowed phases: `intent`, `planning`, `implementation`, `review`, `verification`, `complete`.
-- Keep YAML frontmatter as the authoritative task state.
+- Keep YAML frontmatter as the canonical lifecycle state.
 - Use the Markdown body for context, decisions, and evidence.
 
 ## Branch / Worktree

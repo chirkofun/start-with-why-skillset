@@ -30,9 +30,6 @@ ARCHITECTURE_RADAR.md
 ```md
 ---
 task_id: <task-id>
-status: <status>
-phase: <phase>
-current_slice: <slice-or-null>
 updated: YYYY-MM-DD
 ---
 

@@ -107,7 +107,9 @@ Capture durable project constraints in task-scoped `FEATURE_INTENT.md`.
 
 ## Structured task state
 
-Task-state Markdown files managed by this skillset should include YAML frontmatter. The frontmatter is the authoritative structured state; the Markdown body is for context, decisions, and evidence.
+New or modified task-state Markdown files managed by this skillset must include YAML frontmatter. Legacy files without frontmatter must be migrated before lifecycle routing depends on them.
+
+`TASK.md` frontmatter is the canonical lifecycle source. Other task-state frontmatter is contextual metadata or a point-in-time snapshot; it must not override `TASK.md`.
 
 Minimum `TASK.md` frontmatter:
 
@@ -170,8 +172,8 @@ Every completed slice needs evidence, checks, and a review verdict. Every deferr
 Before reading task-specific files, the agent must:
 
 1. Determine `<ORCHESTRATION_ROOT>`.
-2. Read `<ORCHESTRATION_ROOT>/current-task.md` if it exists.
-3. Read the active task's `TASK.md`.
+2. Read `<ORCHESTRATION_ROOT>/current-task.md` if it exists as a routing pointer.
+3. Read the candidate task's `TASK.md` canonical frontmatter.
 4. Compare current user request with the active task.
 5. Continue only if the request clearly matches and the task is not completed or archived.
 6. If the matching task is completed/archived, create a follow-up unless the user explicitly asks to reopen.

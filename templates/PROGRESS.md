@@ -1,8 +1,5 @@
 ---
 task_id: ""
-status: new
-phase: intent
-current_slice: null
 updated: ""
 ---
 
