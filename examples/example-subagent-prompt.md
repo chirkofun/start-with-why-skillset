@@ -14,6 +14,9 @@ Slice:
 Relevant intent:
 <copy only relevant sections from FEATURE_INTENT.md>
 
+Relevant research:
+<copy only relevant facts from CODEBASE_RESEARCH.md, if present>
+
 Rules:
 - Obey project-local instructions over generic skill instructions.
 - Do not broaden scope.

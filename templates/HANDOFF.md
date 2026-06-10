@@ -13,7 +13,7 @@ updated: ""
 new | planned | active | paused | blocked | deferred | completed | archived | superseded
 
 ## Current phase
-intent | planning | implementation | review | verification | complete
+research | intent | planning | implementation | review | verification | complete
 
 ## Branch / Worktree
 
@@ -33,6 +33,11 @@ intent | planning | implementation | review | verification | complete
 |---|---|---|---|---|
 
 ## Next slice
+
+## Research brief
+- Architecture:
+- Likely files/areas:
+- Pitfalls:
 
 ## Files/areas of interest
 - 

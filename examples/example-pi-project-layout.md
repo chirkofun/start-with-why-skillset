@@ -12,6 +12,7 @@ project/
     tasks/
       2026-06-08-upload-retry/
         TASK.md
+        CODEBASE_RESEARCH.md
         FEATURE_INTENT.md
         VERTICAL_PLAN.md
         PROGRESS.md

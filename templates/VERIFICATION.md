@@ -12,6 +12,7 @@ updated: ""
 | File | Status | Evidence |
 |---|---|---|
 | TASK.md |  |  |
+| CODEBASE_RESEARCH.md |  |  |
 | TASKS.md |  |  |
 | current-task.md |  |  |
 | PROGRESS.md |  |  |

@@ -28,7 +28,7 @@ Task lifecycle:
 - New/modified task-state files must include YAML frontmatter; migrate legacy files before routing depends on them.
 - `TASK.md` frontmatter is the canonical lifecycle source; other frontmatter is contextual metadata or a snapshot.
 - Task statuses: `new`, `planned`, `active`, `paused`, `blocked`, `deferred`, `completed`, `archived`, `superseded`.
-- Task phases: `intent`, `planning`, `implementation`, `review`, `verification`, `complete`.
+- Task phases: `research`, `intent`, `planning`, `implementation`, `review`, `verification`, `complete`.
 - Completed tasks must not be silently resumed; create a follow-up task unless the user explicitly asks to reopen.
 - Archive only completed, superseded, abandoned, or intentionally obsolete tasks, and record the reason.
 - Map each implementation task to a branch and, for parallel active work, a separate worktree.

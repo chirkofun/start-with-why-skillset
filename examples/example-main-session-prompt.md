@@ -11,8 +11,9 @@ Task:
 <describe feature/fix>
 
 Start with `using-skillset`, then run:
-1. `align-intent`
-2. `plan-vertical-slices`
-3. `handoff-session`
+1. `codebase-research`
+2. `align-intent`
+3. `plan-vertical-slices`
+4. `handoff-session`
 
 Do not implement code.

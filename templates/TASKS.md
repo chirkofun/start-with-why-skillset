@@ -9,7 +9,7 @@ updated: ""
 
 ## Task Status Rules
 
-- `new`: task created, intent not yet aligned.
+- `new`: task created; research and intent may still be incomplete.
 - `planned`: vertical plan exists, implementation not started.
 - `active`: currently being worked in this worktree/session.
 - `paused`: valid task, not current in this worktree/session.

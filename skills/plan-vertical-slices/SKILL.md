@@ -12,7 +12,7 @@ Goal: create/update:
 <ORCHESTRATION_ROOT>/tasks/<task-id>/PROGRESS.md
 ```
 
-Use task-scoped `FEATURE_INTENT.md` as source of truth.
+Use task-scoped `FEATURE_INTENT.md` as source of truth. Use `CODEBASE_RESEARCH.md` only for likely files, risks, and verification entry points.
 
 ## Preconditions
 
@@ -20,6 +20,7 @@ Read:
 
 ```text
 <ORCHESTRATION_ROOT>/tasks/<task-id>/TASK.md
+<ORCHESTRATION_ROOT>/tasks/<task-id>/CODEBASE_RESEARCH.md if present
 <ORCHESTRATION_ROOT>/tasks/<task-id>/FEATURE_INTENT.md
 AGENTS.md
 CLAUDE.md

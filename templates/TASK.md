@@ -1,7 +1,7 @@
 ---
 task_id: ""
 status: new
-phase: intent
+phase: research
 current_slice: null
 created: ""
 updated: ""
@@ -29,7 +29,7 @@ superseded_by: ""
 ## Lifecycle Notes
 
 - Allowed statuses: `new`, `planned`, `active`, `paused`, `blocked`, `deferred`, `completed`, `archived`, `superseded`.
-- Allowed phases: `intent`, `planning`, `implementation`, `review`, `verification`, `complete`.
+- Allowed phases: `research`, `intent`, `planning`, `implementation`, `review`, `verification`, `complete`.
 - Keep YAML frontmatter as the canonical lifecycle state.
 - Use the Markdown body for context, decisions, and evidence.
 

@@ -5,7 +5,9 @@ description: Delegate one vertical slice to a subagent with strict scope, stop c
 
 # Subagent Slice Development
 
-Use for implementation sessions where subagents develop slices. 
+Use for implementation sessions where subagents develop slices.
+Model hint: moderate coding model by default; strong reasoning only for risky cross-cutting slices.
+
 In Pi, use the `subagent` tool if available.
 If the `subagent` tool is not available, do not pretend delegation happened.
 Instead, produce a subagent prompt for the user to run in a separate Pi session or tmux pane.
@@ -22,6 +24,7 @@ Before spawning a subagent, provide only:
 - slice plan
 - current progress, including the slice table row
 - applicable project-local instructions and constraints
+- relevant `CODEBASE_RESEARCH.md` facts, if present
 - files/areas already known
 - allowed scope
 - disallowed scope
@@ -44,6 +47,7 @@ Task ID:
 
 Read:
 - <ORCHESTRATION_ROOT>/tasks/<task-id>/TASK.md
+- <ORCHESTRATION_ROOT>/tasks/<task-id>/CODEBASE_RESEARCH.md if present
 - <ORCHESTRATION_ROOT>/tasks/<task-id>/FEATURE_INTENT.md
 - <ORCHESTRATION_ROOT>/tasks/<task-id>/VERTICAL_PLAN.md
 - <ORCHESTRATION_ROOT>/tasks/<task-id>/PROGRESS.md

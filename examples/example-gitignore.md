@@ -4,6 +4,7 @@
 # .pi/skills/
 # .pi/templates/
 # .pi/orchestration.md
+# .pi/tasks/*/CODEBASE_RESEARCH.md
 # .pi/tasks/*/FEATURE_INTENT.md
 # .pi/tasks/*/VERTICAL_PLAN.md
 # .pi/tasks/*/VERIFICATION.md

@@ -21,7 +21,7 @@ Order:
 
 ## Respect project instructions
 
-Before planning or implementation, inspect applicable project-local instructions:
+Before research, planning, or implementation, inspect applicable project-local instructions:
 
 ```text
 AGENTS.md
@@ -88,7 +88,7 @@ new, planned, active, paused, blocked, deferred, completed, archived, superseded
 Allowed phases:
 
 ```text
-intent, planning, implementation, review, verification, complete
+research, intent, planning, implementation, review, verification, complete
 ```
 
 ## Task identity check
@@ -135,7 +135,8 @@ Never read task-specific files from the root orchestration folder.
 Feature/fix:
 
 ```text
-no matching task     -> create task -> align-intent
+no matching task     -> create task shell -> codebase-research
+research missing     -> codebase-research for non-trivial requests
 intent unclear       -> align-intent
 intent clear/no plan -> plan-vertical-slices
 plan exists/code     -> tdd-vertical-slice or subagent-slice-development
@@ -146,7 +147,7 @@ before done          -> verification-before-completion
 Bug:
 
 ```text
-align-intent -> systematic-debugging-slice -> plan-vertical-slices
+codebase-research -> align-intent -> systematic-debugging-slice -> plan-vertical-slices
 ```
 
 Architecture:
