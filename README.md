@@ -28,8 +28,9 @@ The orchestration root must be project-local, not global.
 The agent may explore horizontally, but it must implement vertically.
 
 ```text
-Understand intention
-→ create task-scoped intent
+Create task shell
+→ research relevant codebase context
+→ clarify task-scoped intent
 → plan vertical slices
 → implement one slice
 → verify communication between touched layers
@@ -53,6 +54,7 @@ project/
     tasks/
       <task-id>/
         TASK.md
+        CODEBASE_RESEARCH.md
         FEATURE_INTENT.md
         VERTICAL_PLAN.md
         PROGRESS.md
@@ -79,7 +81,7 @@ Do not hardcode `.agent`, `.pi`, or `.claude` inside reusable skills.
 
 Always obey project-local instructions over generic skill instructions.
 
-Before planning or implementation, inspect applicable project files such as:
+Before research, planning, or implementation, inspect applicable project files such as:
 
 ```text
 AGENTS.md
@@ -135,7 +137,7 @@ new, planned, active, paused, blocked, deferred, completed, archived, superseded
 Task phases:
 
 ```text
-intent, planning, implementation, review, verification, complete
+research, intent, planning, implementation, review, verification, complete
 ```
 
 ## Task lifecycle rules
@@ -187,6 +189,7 @@ Planning session:
 
 ```text
 using-skillset
+codebase-research
 align-intent
 plan-vertical-slices
 handoff-session
@@ -202,3 +205,9 @@ intent-slice-review
 repeat
 verification-before-completion
 ```
+
+Subagent model hints:
+- research: cheap/fast,
+- implementation: moderate coding model,
+- review: strong reasoning,
+- verification: moderate/fast unless high risk.

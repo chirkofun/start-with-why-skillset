@@ -13,6 +13,7 @@ From `<ORCHESTRATION_ROOT>/tasks/<task-id>/`:
 
 ```text
 TASK.md
+CODEBASE_RESEARCH.md if present
 FEATURE_INTENT.md
 VERTICAL_PLAN.md
 PROGRESS.md
@@ -45,7 +46,7 @@ updated: YYYY-MM-DD
 new | planned | active | paused | blocked | deferred | completed | archived | superseded
 
 ## Current phase
-intent | planning | implementation | review | verification | complete
+research | intent | planning | implementation | review | verification | complete
 
 ## Intent
 ...
@@ -66,6 +67,11 @@ intent | planning | implementation | review | verification | complete
 
 ## Next slice
 ...
+
+## Research brief
+- Architecture:
+- Likely files/areas:
+- Pitfalls:
 
 ## Files/areas of interest
 - ...

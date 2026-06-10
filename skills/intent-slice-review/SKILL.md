@@ -7,18 +7,23 @@ description: Review a completed slice against feature intent, vertical plan, tes
 
 Use after each slice, before starting the next one.
 
+Prefer a review subagent when available to keep implementation context out of the main agent. Model hint: strong reasoning model; fast/moderate is acceptable for tiny diffs.
+
+If no `subagent` tool is available, perform the review directly or output the prompt below for a separate session. The main agent owns final `PROGRESS.md` and `TASK.md` lifecycle updates.
+
 ## Inputs
 
 Read from `<ORCHESTRATION_ROOT>/tasks/<task-id>/`:
 
 ```text
 TASK.md
+CODEBASE_RESEARCH.md if present
 FEATURE_INTENT.md
 VERTICAL_PLAN.md
 PROGRESS.md
 ```
 
-Also inspect current diff / changed files and test results.
+Also inspect current diff, changed files, and test results.
 
 ## Review checklist
 
@@ -33,9 +38,32 @@ Previous slices still valid: yes|unknown|no
 Architecture quality: deepened|preserved|shallowed|unknown
 ```
 
-## Deep module check
+Deep-module check: flag pass-through wrappers, leaked details, excessive mocks, scattered concepts, or improved locality/leverage/testability.
 
-Ask whether this added pass-through wrappers, leaked implementation details, required excessive mocks, spread one concept across many files, or improved locality/leverage/testability.
+## Review subagent prompt
+
+```md
+You are reviewing exactly one completed vertical slice.
+
+ORCHESTRATION_ROOT: <ORCHESTRATION_ROOT>
+Task ID: <task-id>
+Slice: <slice>
+
+Read task files, inspect only the current diff/changed files and relevant test output.
+
+Rules:
+- Do not implement fixes.
+- Do not broaden scope or review future slices.
+- Check intent, stop condition, tests, communication, non-goals, and deep-module quality.
+- Return a compact verdict with evidence and required fixes.
+
+Return:
+- verdict: Proceed | Fix current slice | Re-plan | Architecture review needed
+- evidence
+- required fixes
+- risks
+- recommended next skill
+```
 
 ## Output
 

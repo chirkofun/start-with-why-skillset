@@ -13,59 +13,35 @@ Goal: create or update:
 
 Do not implement.
 Do not produce a full implementation plan.
-Do not ask questions before inspecting obvious code/docs.
+Do not ask questions before reading `CODEBASE_RESEARCH.md` when present.
 
 ## Preconditions
 
-`using-skillset` must have determined `<ORCHESTRATION_ROOT>` and `<task-id>` and inspected applicable project-local instructions (`AGENTS.md`, `CLAUDE.md`, `SYSTEM.md`, `CONTEXT.md`, `docs/adr/`, and nearer-scoped instruction files when relevant).
+`using-skillset` must have determined `<ORCHESTRATION_ROOT>`, resolved or requested a `<task-id>`, and inspected applicable project-local instructions (`AGENTS.md`, `CLAUDE.md`, `SYSTEM.md`, `CONTEXT.md`, `docs/adr/`, and nearer-scoped instruction files when relevant).
 
-If no matching task exists, create:
-
-```text
-<ORCHESTRATION_ROOT>/tasks/<task-id>/
-```
-
-where `<task-id>` is:
-
-```text
-YYYY-MM-DD-short-slug
-```
-
-Also create/update:
-
-```text
-<ORCHESTRATION_ROOT>/tasks/<task-id>/TASK.md
-<ORCHESTRATION_ROOT>/TASKS.md
-<ORCHESTRATION_ROOT>/current-task.md
-```
-
-`TASK.md` must include YAML frontmatter with at least:
-
-```yaml
-task_id: <task-id>
-status: new
-phase: intent
-current_slice: null
-created: YYYY-MM-DD
-updated: YYYY-MM-DD
-base_branch: main
-branch: ""
-worktree: ""
-archived: false
-```
+If no matching task exists, create the task shell, set `TASK.md` frontmatter to `status: new`, `phase: research`, `current_slice: null`, update `TASKS.md` and `current-task.md`, then route to `codebase-research` before continuing intent alignment.
 
 Follow project-local branch/worktree instructions when they differ from defaults.
+
+Read when available:
+
+```text
+<ORCHESTRATION_ROOT>/tasks/<task-id>/CODEBASE_RESEARCH.md
+```
+
+If `CODEBASE_RESEARCH.md` is missing for a non-trivial feature/fix, stop and recommend `codebase-research`. Skip only for trivial, exact-file, or documentation-only requests.
 
 ## Process
 
 1. Restate the request as intent, destination, and observable behaviors.
-2. Inspect relevant repo/docs first.
-3. Ask only blocking questions.
-4. Ask max 5 questions by default.
-5. For each question, include your recommended answer.
-6. Capture facts, not guesses.
-7. Capture durable project constraints in `FEATURE_INTENT.md`.
-8. Write/update task-scoped `FEATURE_INTENT.md`.
+2. Use `CODEBASE_RESEARCH.md` to ground questions; do not repeat broad research.
+3. Do narrow inspection only to verify a blocking uncertainty.
+4. Ask only blocking questions.
+5. Ask max 5 questions by default.
+6. For each question, include your recommended answer.
+7. Capture facts, not guesses.
+8. Capture durable project constraints in `FEATURE_INTENT.md`.
+9. Write/update task-scoped `FEATURE_INTENT.md` and set `TASK.md` phase to `intent`.
 
 ## Feature Intent format
 
@@ -86,6 +62,10 @@ Follow project-local branch/worktree instructions when they differ from defaults
 
 ## Constraints
 - ...
+
+## Research Used
+- CODEBASE_RESEARCH.md:
+- Research confidence:
 
 ## Existing System Facts
 - ...

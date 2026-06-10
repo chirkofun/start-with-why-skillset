@@ -7,6 +7,7 @@ examples/example-main-session-prompt.md
 examples/example-pi-project-layout.md
 examples/example-subagent-prompt.md
 skills/align-intent/SKILL.md
+skills/codebase-research/SKILL.md
 skills/deep-module-design/SKILL.md
 skills/handoff-session/SKILL.md
 skills/improve-codebase-architecture/SKILL.md
@@ -18,6 +19,7 @@ skills/tdd-vertical-slice/SKILL.md
 skills/using-skillset/SKILL.md
 skills/verification-before-completion/SKILL.md
 templates/ARCHITECTURE_RADAR.md
+templates/CODEBASE_RESEARCH.md
 templates/CONTEXT.md
 templates/FEATURE_INTENT.md
 templates/HANDOFF.md

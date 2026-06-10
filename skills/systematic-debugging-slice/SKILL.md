@@ -9,7 +9,7 @@ Use for bugs.
 
 ## Inputs
 
-Use task-scoped files from `<ORCHESTRATION_ROOT>/tasks/<task-id>/`. If bug intent does not exist, create a minimal `FEATURE_INTENT.md`. Respect project-local instructions over generic skill instructions.
+Use task-scoped files from `<ORCHESTRATION_ROOT>/tasks/<task-id>/`, including `CODEBASE_RESEARCH.md` if present. If bug intent does not exist, create a minimal `FEATURE_INTENT.md`. Respect project-local instructions over generic skill instructions.
 
 ## Process
 

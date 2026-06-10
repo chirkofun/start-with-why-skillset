@@ -21,6 +21,10 @@ updated: ""
 - Branch/worktree rules:
 - Other constraints:
 
+## Research Used
+- CODEBASE_RESEARCH.md:
+- Research confidence:
+
 ## Existing System Facts
 - 
 

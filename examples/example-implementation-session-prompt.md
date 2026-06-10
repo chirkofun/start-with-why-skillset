@@ -12,6 +12,7 @@ Respect project-local instructions, task frontmatter, and branch/worktree lifecy
 Read:
 - `<ORCHESTRATION_ROOT>/current-task.md`
 - `<ORCHESTRATION_ROOT>/tasks/<task-id>/TASK.md`
+- `<ORCHESTRATION_ROOT>/tasks/<task-id>/CODEBASE_RESEARCH.md` if present
 - `<ORCHESTRATION_ROOT>/tasks/<task-id>/FEATURE_INTENT.md`
 - `<ORCHESTRATION_ROOT>/tasks/<task-id>/VERTICAL_PLAN.md`
 - `<ORCHESTRATION_ROOT>/tasks/<task-id>/PROGRESS.md`

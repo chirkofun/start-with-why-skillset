@@ -18,7 +18,7 @@ Do not create speculative interfaces.
 
 For the current slice:
 
-1. Read `TASK.md`, `FEATURE_INTENT.md`, `VERTICAL_PLAN.md`, and `PROGRESS.md` from `<ORCHESTRATION_ROOT>/tasks/<task-id>/`.
+1. Read `TASK.md`, `CODEBASE_RESEARCH.md` if present, `FEATURE_INTENT.md`, `VERTICAL_PLAN.md`, and `PROGRESS.md` from `<ORCHESTRATION_ROOT>/tasks/<task-id>/`.
 2. Confirm project-local instructions and task branch/worktree constraints still apply.
 3. Identify the slice stop condition.
 4. Set `TASK.md` frontmatter to `status: active`, `phase: implementation`, and the current slice.
