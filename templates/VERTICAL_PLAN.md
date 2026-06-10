@@ -1,8 +1,5 @@
 ---
 task_id: ""
-status: planned
-phase: planning
-current_slice: 0
 updated: ""
 ---
 

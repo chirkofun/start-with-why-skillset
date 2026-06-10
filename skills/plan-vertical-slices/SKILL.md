@@ -109,9 +109,6 @@ Initialize/update `PROGRESS.md` as slice-based state:
 ```md
 ---
 task_id: <task-id>
-status: planned
-phase: planning
-current_slice: 0
 updated: YYYY-MM-DD
 ---
 

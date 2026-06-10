@@ -72,7 +72,9 @@ Task-level files:
 
 ## Structured task state
 
-Task-state Markdown files managed by this skillset should include YAML frontmatter. Treat frontmatter as authoritative for routing and lifecycle state.
+New or modified task-state Markdown files managed by this skillset must include YAML frontmatter. Legacy files without frontmatter must be migrated before lifecycle routing depends on them.
+
+`TASK.md` frontmatter is the canonical lifecycle source. Other task-state frontmatter is contextual metadata or a point-in-time snapshot; it must not override `TASK.md`.
 
 Task statuses:
 
@@ -92,9 +94,9 @@ Map implementation tasks to branches, branch from `main` by default unless proje
 
 Before using any task-specific file:
 
-1. Read `<ORCHESTRATION_ROOT>/current-task.md`.
+1. Read `<ORCHESTRATION_ROOT>/current-task.md` as a routing pointer.
 2. If it points to an active task, read that task's `TASK.md`.
-3. Check the active task status and lifecycle state.
+3. Check the active task status and lifecycle state from `TASK.md` frontmatter.
 4. If the active task is `completed` or `archived`, do not resume it silently; create a follow-up task unless the user explicitly asks to reopen it.
 5. Compare the user's current request to the active task summary, intent, and destination.
 6. If it clearly matches a non-completed active task, continue that task.

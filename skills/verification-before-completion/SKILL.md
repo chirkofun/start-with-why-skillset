@@ -23,7 +23,7 @@ Also inspect test output / CI status if available.
 
 ## Verify
 
-1. `TASK.md` frontmatter, `TASKS.md`, `current-task.md`, and `PROGRESS.md` agree on task identity, status, phase, and current slice.
+1. `TASK.md` frontmatter is canonical; `TASKS.md`, `current-task.md`, and `PROGRESS.md` point to the same task and do not contradict it.
 2. Every planned slice appears in the `PROGRESS.md` slice table.
 3. Every planned slice is complete or explicitly deferred.
 4. Every completed slice has evidence, checks, and a review verdict.

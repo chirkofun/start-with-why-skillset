@@ -60,7 +60,9 @@ docs/adr/
 
 ## Structured state rule
 
-Use YAML frontmatter in task-state files managed by this skillset. Treat frontmatter as authoritative for routing and lifecycle state.
+New or modified task-state files managed by this skillset must include YAML frontmatter. Legacy files without frontmatter must be migrated before lifecycle routing depends on them.
+
+`TASK.md` frontmatter is the canonical lifecycle source. Other task-state frontmatter is contextual metadata or a point-in-time snapshot; it must not override `TASK.md`.
 
 Minimum task state:
 
@@ -93,9 +95,9 @@ intent, planning, implementation, review, verification, complete
 
 Before reading task-specific files:
 
-1. Read `<ORCHESTRATION_ROOT>/current-task.md`.
+1. Read `<ORCHESTRATION_ROOT>/current-task.md` as a routing pointer.
 2. If it points to a task, read `<ORCHESTRATION_ROOT>/tasks/<task-id>/TASK.md`.
-3. Check the active task status and lifecycle state.
+3. Check the active task status and lifecycle state from `TASK.md` frontmatter.
 4. If the active task is `completed` or `archived`, do not resume it silently; create a follow-up task unless the user explicitly asks to reopen it.
 5. Compare active task to user's current request.
 6. If the request clearly continues a non-completed active task, use that task.
@@ -108,7 +110,7 @@ Default: new feature/fix request means new task unless user says continue.
 ## Task lifecycle rules
 
 - Only one current task is allowed per worktree/session.
-- When switching away from unfinished work, mark the previous task `paused` or `blocked` before changing `current-task.md`.
+- When switching away from unfinished work, update the previous task's `TASK.md` status before changing `current-task.md`.
 - When implementation starts, set task status to `active` and record branch/worktree when applicable.
 - Branch from `main` by default unless project-local instructions say otherwise.
 - If the current git branch does not match the task branch, warn before editing.

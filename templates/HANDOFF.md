@@ -1,8 +1,5 @@
 ---
 task_id: ""
-status: ""
-phase: ""
-current_slice: null
 updated: ""
 ---
 

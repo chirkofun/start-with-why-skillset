@@ -25,7 +25,8 @@ Rules:
 - Only one task may be current per worktree/session.
 
 Task lifecycle:
-- Use YAML frontmatter in task-state files as the authoritative structured state.
+- New/modified task-state files must include YAML frontmatter; migrate legacy files before routing depends on them.
+- `TASK.md` frontmatter is the canonical lifecycle source; other frontmatter is contextual metadata or a snapshot.
 - Task statuses: `new`, `planned`, `active`, `paused`, `blocked`, `deferred`, `completed`, `archived`, `superseded`.
 - Task phases: `intent`, `planning`, `implementation`, `review`, `verification`, `complete`.
 - Completed tasks must not be silently resumed; create a follow-up task unless the user explicitly asks to reopen.
