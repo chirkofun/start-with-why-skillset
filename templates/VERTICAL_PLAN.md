@@ -1,3 +1,11 @@
+---
+task_id: ""
+status: planned
+phase: planning
+current_slice: 0
+updated: ""
+---
+
 # Vertical Plan
 
 ## Slice 0: Walking skeleton / tracer bullet
@@ -23,5 +31,8 @@
 ### Verification
 
 ### Stop condition
+
+### Deferral rule
+What makes this slice safe to defer, if anything. Otherwise: not deferrable.
 
 ### Non-goals protected

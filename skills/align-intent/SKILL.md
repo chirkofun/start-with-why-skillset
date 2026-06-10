@@ -17,7 +17,7 @@ Do not ask questions before inspecting obvious code/docs.
 
 ## Preconditions
 
-`using-skillset` must have determined `<ORCHESTRATION_ROOT>` and `<task-id>`.
+`using-skillset` must have determined `<ORCHESTRATION_ROOT>` and `<task-id>` and inspected applicable project-local instructions (`AGENTS.md`, `CLAUDE.md`, `SYSTEM.md`, `CONTEXT.md`, `docs/adr/`, and nearer-scoped instruction files when relevant).
 
 If no matching task exists, create:
 
@@ -39,6 +39,23 @@ Also create/update:
 <ORCHESTRATION_ROOT>/current-task.md
 ```
 
+`TASK.md` must include YAML frontmatter with at least:
+
+```yaml
+task_id: <task-id>
+status: new
+phase: intent
+current_slice: null
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+base_branch: main
+branch: ""
+worktree: ""
+archived: false
+```
+
+Follow project-local branch/worktree instructions when they differ from defaults.
+
 ## Process
 
 1. Restate the request as intent, destination, and observable behaviors.
@@ -47,7 +64,8 @@ Also create/update:
 4. Ask max 5 questions by default.
 5. For each question, include your recommended answer.
 6. Capture facts, not guesses.
-7. Write/update task-scoped `FEATURE_INTENT.md`.
+7. Capture durable project constraints in `FEATURE_INTENT.md`.
+8. Write/update task-scoped `FEATURE_INTENT.md`.
 
 ## Feature Intent format
 

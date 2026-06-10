@@ -55,4 +55,10 @@ Proceed | Fix current slice | Re-plan | Architecture review needed
 ...
 ```
 
-Update task-scoped `PROGRESS.md` with the verdict.
+Update task-scoped `PROGRESS.md` with the verdict in the slice table.
+
+Rules:
+- If verdict is `Proceed`, mark the reviewed slice `done`, include evidence and checks, and advance `current_slice` to the next planned slice.
+- If verdict is `Fix current slice`, mark the slice `failed_review` or `in_progress` with required fixes.
+- If verdict is `Re-plan`, update `TASK.md` frontmatter to `phase: planning` and do not start another slice.
+- If a slice is intentionally postponed, mark it `deferred` with reason, impact, follow-up task/decision, and approval/source.

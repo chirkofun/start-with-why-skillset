@@ -21,9 +21,14 @@ Read:
 ```text
 <ORCHESTRATION_ROOT>/tasks/<task-id>/TASK.md
 <ORCHESTRATION_ROOT>/tasks/<task-id>/FEATURE_INTENT.md
+AGENTS.md
+CLAUDE.md
+SYSTEM.md
 CONTEXT.md
 docs/adr/
 ```
+
+Respect project-local instructions over generic skill instructions.
 
 ## Invalid plan
 
@@ -97,6 +102,36 @@ What must be true before next slice.
 - Prefer deep modules over shallow glue.
 - Keep slices small enough for subagents.
 
+## Progress format
+
+Initialize/update `PROGRESS.md` as slice-based state:
+
+```md
+---
+task_id: <task-id>
+status: planned
+phase: planning
+current_slice: 0
+updated: YYYY-MM-DD
+---
+
+# Progress
+
+## Slice Progress
+
+| Slice | Status | Evidence | Checks | Review Verdict |
+|---|---|---|---|---|
+| Slice 0: Walking skeleton / tracer bullet | planned |  |  |  |
+```
+
+Allowed slice statuses:
+
+```text
+planned, in_progress, blocked, done, deferred, failed_review
+```
+
+Deferred slices must include reason, impact, and follow-up decision.
+
 ## Output
 
-Write/update `VERTICAL_PLAN.md`, `PROGRESS.md`, and set `TASK.md` status to `planned`.
+Write/update `VERTICAL_PLAN.md`, `PROGRESS.md`, and set `TASK.md` frontmatter to `status: planned`, `phase: planning`, and `current_slice: 0` unless another slice is intentionally current.

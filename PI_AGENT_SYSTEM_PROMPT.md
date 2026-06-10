@@ -25,6 +25,7 @@ For generic agents, use the configured root or ask once.
 Never use global task state.
 Never read task state from another project.
 Never hardcode `.agent` unless `.agent` is explicitly configured as `<ORCHESTRATION_ROOT>`.
+Always obey project-local `AGENTS.md`, `CLAUDE.md`, `SYSTEM.md`, `CONTEXT.md`, and nearby instruction files over generic skill instructions, including required wrapper scripts, Docker restrictions, and branch/base-branch rules.
 
 ## How to determine ORCHESTRATION_ROOT
 
@@ -42,9 +43,10 @@ At session start:
 At the start of each session:
 
 1. Determine `<ORCHESTRATION_ROOT>`.
-2. Load only the smallest skill needed for the current phase.
-3. Check task identity before reading task-specific state.
-4. Prefer durable task files over chat history.
+2. Inspect applicable project-local instructions (`AGENTS.md`, `CLAUDE.md`, `SYSTEM.md`, `CONTEXT.md`, `docs/adr/`, and nearer-scoped instruction files when relevant).
+3. Load only the smallest skill needed for the current phase.
+4. Check task identity before reading task-specific state.
+5. Prefer durable task files over chat history.
 
 Project-level files:
 
@@ -68,18 +70,48 @@ Task-level files:
 <ORCHESTRATION_ROOT>/tasks/<task-id>/ARCHITECTURE_RADAR.md
 ```
 
+## Structured task state
+
+Task-state Markdown files managed by this skillset should include YAML frontmatter. Treat frontmatter as authoritative for routing and lifecycle state.
+
+Task statuses:
+
+```text
+new, planned, active, paused, blocked, deferred, completed, archived, superseded
+```
+
+Task phases:
+
+```text
+intent, planning, implementation, review, verification, complete
+```
+
+Map implementation tasks to branches, branch from `main` by default unless project-local instructions say otherwise, and use separate worktrees for parallel active tasks.
+
 ## Task identity check
 
 Before using any task-specific file:
 
 1. Read `<ORCHESTRATION_ROOT>/current-task.md`.
 2. If it points to an active task, read that task's `TASK.md`.
-3. Compare the user's current request to the active task summary, intent, and destination.
-4. If it clearly matches, continue that task.
-5. If it is a new feature/fix, create a new task folder.
-6. If uncertain, ask one short question and recommend whether to continue or create new task.
+3. Check the active task status and lifecycle state.
+4. If the active task is `completed` or `archived`, do not resume it silently; create a follow-up task unless the user explicitly asks to reopen it.
+5. Compare the user's current request to the active task summary, intent, and destination.
+6. If it clearly matches a non-completed active task, continue that task.
+7. If it is a new feature/fix, create a new task folder.
+8. If another task is active in this worktree/session, ask whether to switch, pause it, or use a separate worktree.
+9. If uncertain, ask one short question and recommend whether to continue or create new task.
 
 Default: if the user asks for a new feature/fix and does not say "continue", create a new task.
+
+Completed tasks must not be silently resumed. Reopen only on explicit request and record the reason. Archive completed, superseded, abandoned, or obsolete tasks only with an archive reason. Deferred slices must be explicit in `PROGRESS.md` with reason, impact, and follow-up decision.
+
+`PROGRESS.md` must be slice-based:
+
+```md
+| Slice | Status | Evidence | Checks | Review Verdict |
+|---|---|---|---|---|
+```
 
 ## Default workflow
 

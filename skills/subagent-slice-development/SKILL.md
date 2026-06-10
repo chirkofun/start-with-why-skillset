@@ -5,7 +5,10 @@ description: Delegate one vertical slice to a subagent with strict scope, stop c
 
 # Subagent Slice Development
 
-Use for implementation sessions where subagents develop slices.
+Use for implementation sessions where subagents develop slices. 
+In Pi, use the `subagent` tool if available.
+If the `subagent` tool is not available, do not pretend delegation happened.
+Instead, produce a subagent prompt for the user to run in a separate Pi session or tmux pane.
 
 ## Main agent responsibilities
 
@@ -17,7 +20,8 @@ Before spawning a subagent, provide only:
 - slice name and number
 - relevant Feature Intent sections
 - slice plan
-- current progress
+- current progress, including the slice table row
+- applicable project-local instructions and constraints
 - files/areas already known
 - allowed scope
 - disallowed scope
@@ -48,13 +52,15 @@ Your slice:
 <slice>
 
 Rules:
+- Obey project-local instructions over this generic prompt.
 - Do not broaden scope.
 - Do not implement future slices.
 - Do not refactor unrelated code.
 - Write/identify one failing check first.
 - Implement the minimum cross-layer change.
 - Verify communication between touched layers.
-- Update progress only for your slice.
+- Update progress only for your slice row and related evidence sections.
+- Do not mark the slice `done` without review; leave it ready for `intent-slice-review`.
 
 Return:
 - files changed
